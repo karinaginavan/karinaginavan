@@ -1,0 +1,110 @@
+---
+layout: default
+---
+
+<!-- ============================================================= SECTION – HERO ============================================================= -->
+
+<section id="hero">
+  <div id="hero-main">
+
+    <div class="item" style="background-image: url(assets/images/art/splash-1.png);">
+      <div class="container">
+        <div class="caption vertical-center text-center">
+
+          <h1 class="light-color">Single Sign On</h1>
+
+        </div><!-- /.caption -->
+      </div><!-- /.container -->
+    </div><!-- /.item -->
+
+
+  </div><!-- /.owl-carousel -->
+</section>
+
+<!-- ============================================================= SECTION – HERO : END ============================================================= -->
+
+<div class="container inner">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="caption vertical-center text-center">
+            <h2> Option 1: Configuring your site to use Single Sign (SSO) On from OneHQ </h2>
+          </div>
+          <ol>
+            <li> Login to HQ Admin, and set your Organization's Service URL to the URL where authentication requests will come from. </li>
+            <li> Configure your site to use a CAS client to authenticate with HQ SSO. <br/>
+                 There are many CAS clients and plugins online for popular languages and applications. <br/>
+                 See <a href="https://jasig.github.io/cas/development/integration/CAS-Clients.html"> https://jasig.github.io/cas/development/integration/CAS-Clients.html </a>  for examples.<br/>
+              <ul>
+                <li> Server Hostname: hqsso.com </li>
+                <li> Server Port: 443 </li>
+                <li> Server Path: cas </li>
+              </ul>
+            </li>
+            <li> Depending on your setup, you may have to map users on your site to users in OneHQ.
+                 (Note that OneHQ uses a numeric ID for the authentication username) </li>
+          </ol>
+          <br/>
+          <br/>
+          <div class="caption vertical-center text-center">
+            <h2> Option 2: Single Sign on CAS API </h2>
+          </div>
+
+          <div class="content-document">
+            <p> Below are the instructions for obtaining tickets for authentication from our CAS API.  Users must be created
+                using the web interface before using the CAS API. An API for creating users is coming soon. </p>
+            <p> The base URL for all requests is <code> https://hqsso.com </code> </p>
+            <p> For testing, our staging server can be used. <code> https://staging.hqsso.com </code> </p>
+            <h3> Request a Ticket Granting Ticket </h3>
+            <p> A Ticket Granting Ticket (TGT) is used to request service tickets for OneHQ applications.  A TGT is valid for 8 hours and can be reused to request new service tickets. </p>
+            <h4> Sample Request </h4>
+            <pre> POST /cas/api/tickets <br/> username=username&password=password </pre>
+            <h4> Sample Response </h4>
+            <pre> { "ticket": "TGC-1456351988rD845E74D70A5DDB736" } </pre>
+            <br/><br/>
+
+            <h3> Request a Service Ticket </h3>
+            <p> A Service Ticket (ST) is used to authenticate one time with an individual application.  Once authenticated, the session will last as long as the TGT used to request this ST is alive.  </p>
+            <h4> Sample Request </h4>
+            <pre>POST /cas/api/tickets/{TGT from previous request} <br/> service={service requested (e.q. https://agencieshq.com/users/service} </pre>
+            <h4> Sample Response </h4>
+            <pre> { "ticket": "ST-1456352402r82FD6B02AC7358435D" } </pre>
+            <br/><br/>
+
+            <h3> Use the Service Ticket to Access Application </h3>
+            <h4> Sample Request </h4>
+            <pre> GET https://agencieshq.com/users/service?ticket={ST} </pre>
+            <br/><br/>
+
+            <h3> Single Sign Out </h3>
+            <p> To sign out of all OneHQ applications (and applications configured to use OneHQ as a CAS server), delete the TGT </p>
+            <h4> Sample Request </h4>
+            <pre> DELETE /cas/api/tickets/{TGT} </pre>
+            <br/><br/>
+
+            <h3> Valid Services </h3>
+            <table class="table table-striped">
+              <tr>
+                <td> AgenciesHQ </td>
+                <td> https://agencieshq.com/users/service </td>
+              </tr>
+              <tr>
+                <td> AdvisorsHQ </td>
+                <td> https://advisorshq.com/users/service </td>
+              </tr>
+              <tr>
+                <td> HQAdmin </td>
+                <td> https://hqadmin.com/users/service </td>
+              </tr>
+              <tr>
+                <td> HQView </td>
+                <td> https://hqview.com/users/service </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    <div>
+  </div>
+</div>
