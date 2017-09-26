@@ -1,0 +1,97 @@
+<aside class="col-md-3">
+
+  <div class="sidebox widget">
+    <h4>Onehq Blog</h4>
+    <ul class="circled">
+      <li>
+        <a href="{{ base }}/blog-index">All articles</a>
+      </li>
+    </ul>
+    <p class="p-smaller">Sign up for news and updates on how our technology is changing the way brokerages do business.</p>
+    <form id="newsletter" class="form-inline newsletter newsletter-side" role="form">
+      <label class="sr-only" for="exampleInputEmail">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
+      <button type="submit" class="btn btn-default btn-submit">Subscribe</button>
+    </form>
+  </div>
+
+  <div class="sidebox widget">
+    <h4>Categories</h4>
+    <ul class="circled">
+      <li>
+        <a href="{{ base }}/blog-index-all">All</a>
+      </li>
+      {% capture tags %}
+        {% for tag in site.tags %}
+          {{ tag[0] }}
+        {% endfor %}
+      {% endcapture %}
+      {% assign sortedtags = tags | split:' ' | sort %}
+      {% for tag in sortedtags %}
+        <li>
+          <a href="{{ base }}/tags/{{ tag }}/">{{ tag }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!--
+  <div class="sidebox widget">
+
+    <h4>Search Posts</h4>
+    <form id="search" class="navbar-form search" role="search">
+      <input type="search" class="form-control" placeholder="Type to search">
+      <button type="submit" class="btn btn-default btn-submit icon-right-open"></button>
+    </form>
+
+  </div>
+  -->
+
+  <!--
+  <div class="sidebox widget">
+    <h4>Archives</h4>
+
+    <ul class="circled">
+      <li><a href="#">March 2016</a></li>
+      <li><a href="#">February 2016</a></li>
+      <li><a href="#">January 2016</a></li>
+      <li><a href="#">December 2016</a></li>
+      <li><a href="#">November 2016</a></li>
+      <li><a href="#">October 2016</a></li>
+    </ul>
+
+    <a href="#" class="txt-btn">All archives</a>
+  </div>
+  -->
+
+  <!--
+  <div class="sidebox widget">
+    <h4>Featured</h4>
+
+    <figure>
+
+      <div class="icon-overlay icn-link">
+        <a href="blog-post.html"><img src="assets/images/art/work01.jpg" alt=""></a>
+      </div>
+
+      <figcaption class="bordered no-top-border">
+        <div class="info">
+          <h4><a href="blog-post.html">Appscreen Dashboard</a></h4>
+          <p>Interactive</p>
+        </div>
+      </figcaption>
+
+    </figure>
+  </div>
+  -->
+
+  <!--
+  <div class="sidebox widget">
+    <h4>Custom Text</h4>
+    <p>Magnis modipsae que lib voloratati andigen daepeditem reporemni labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor.</p>
+    <p>Conecus iure posae volor remped modiatis aut accabora incim explabo eictemperum quiae sitiorem.</p>
+    <a href="#" class="txt-btn">Check out more</a>
+  </div>
+  -->
+
+</aside>
