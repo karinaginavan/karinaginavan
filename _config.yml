@@ -1,11 +1,11 @@
 # Site settings
-title:  OneHQ
-email: sales@onehq.com
-description: "Experience the most powerful solution in the Insurance & Securities Industry. With HQ, you only need one software platform for your entire brokerage."
+title:  KGD
+email: karinaginavan@gmail.com
+description: "Karina Ginavan Design."
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://onehq.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://karinaginavan.com" # the base hostname & protocol for your site
+twitter_username: karinaginavan
+github_username:  karinaginavan
 
 # Build settings
 markdown: kramdown
