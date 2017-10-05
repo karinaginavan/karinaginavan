@@ -3,9 +3,10 @@ title:  KGD
 email: karinaginavan@gmail.com
 description: "Karina Ginavan Design."
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://karinaginavan.com" # the base hostname & protocol for your site
+url: "http://karinaginavan.github.io/kgd" # the base hostname & protocol for your site
 twitter_username: karinaginavan
 github_username:  karinaginavan
+root: /octo-5
 
 # Build settings
 markdown: kramdown
